@@ -1,0 +1,44 @@
+### Create a product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Gaming Laptop",
+  "price": 1299.99,
+  "description": "High performance gaming laptop with RTX 4060",
+  "category": "electronics",
+  "inStock": true
+}
+
+### Create another product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "JavaScript Book",
+  "price": 39.99,
+  "description": "Complete guide to JavaScript",
+  "category": "books",
+  "inStock": true
+}
+
+### Get all products
+GET http://localhost:5000/api/products
+
+### Get products by category
+GET http://localhost:5000/api/products?category=electronics
+
+### Get single product (replace ID with actual)
+GET http://localhost:5000/api/products/YOUR_PRODUCT_ID
+
+### Update product (replace ID with actual)
+PUT http://localhost:5000/api/products/YOUR_PRODUCT_ID
+Content-Type: application/json
+
+{
+  "price": 1199.99,
+  "inStock": false
+}
+
+### Delete product (replace ID with actual)
+DELETE http://localhost:5000/api/products/YOUR_PRODUCT_ID

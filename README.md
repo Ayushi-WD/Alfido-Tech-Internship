@@ -315,7 +315,7 @@ This project is created for educational purposes as part of the Alfido Tech inte
 👩‍💻 Author
 Ayushi Aswal
 
-GitHub: @Ayushi-iAD
+GitHub: @Ayushi-WD
 
 Internship: Alfido Tech
 

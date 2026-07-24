@@ -57,8 +57,9 @@ app.use((err, req, res, next) => {
 
 // Connect to MongoDB and start server
 const PORT = process.env.PORT || 5000;
+const mongoURI = process.env.MONGODB_URI || 'mongodb://mongodb:27017/task1_db';
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(mongoURI)
   .then(() => {
     console.log('✅ Connected to MongoDB');
     app.listen(PORT, () => {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
 
-// GET all products (with optional category filter)
+// GET all products
 router.get('/', async (req, res) => {
   try {
     let query = {};
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET single product by ID
+// GET single product
 router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST create new product
+// POST create product
 router.post('/', async (req, res) => {
   try {
     const product = await Product.create(req.body);
@@ -59,7 +59,6 @@ router.post('/', async (req, res) => {
       data: product
     });
   } catch (error) {
-    // Handle validation errors
     if (error.name === 'ValidationError') {
       const messages = Object.values(error.errors).map(val => val.message);
       return res.status(400).json({

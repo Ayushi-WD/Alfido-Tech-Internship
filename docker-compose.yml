@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: task1_db
+    networks:
+      - app-network
+
+  # Backend API
+  api:
+    build: ./task1-rest-api
+    container_name: task1-api
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongodb:27017/task1_db
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  # Frontend React
+  frontend:
+    build: ./task2-react-frontend
+    container_name: task2-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+# Persistent volume for MongoDB
+volumes:
+  mongo-data:
+
+# Network for all services
+networks:
+  app-network:
+    driver: bridge

@@ -41,4 +41,4 @@ Content-Type: application/json
 }
 
 ### Delete product (replace ID with actual)
-DELETE http://localhost:5000/api/products/YOUR_PRODUCT_ID
+DELETE http://localhost:5000/api/products/YOUR_PRODUCT_ID   
